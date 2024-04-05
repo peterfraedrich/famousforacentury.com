@@ -15,14 +15,14 @@
 
         #wrapper {
             z-index: 1;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100vw;
+            position: relative;
+            width: 100%;
             height: 100vh;
             background-image: url('./img/1.jpg');
-            background-size: cover;
+            background-size: 105vw;
             background-position: center;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
             filter: grayscale(100%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a' x='0' y='0' width='1' height='1'%3E%3CfeGaussianBlur stdDeviation='10' result='b'/%3E%3CfeMorphology operator='dilate' radius='20'/%3E %3CfeMerge%3E%3CfeMergeNode/%3E%3CfeMergeNode in='b'/%3E%3C/feMerge%3E%3C/filter%3E%3C/svg%3E#a");
             overflow: hidden;
             -webkit-backdrop-filter: blur(10px);
@@ -38,10 +38,10 @@
         }
 
         #center {
+            position: absolute;
             z-index: 10;
-            margin-top: 15vh;
-            width: 70vw;
-            height: 70vh;
+            width: 100%;
+            height: 100vh;
             margin: auto;
         }
 
@@ -50,10 +50,18 @@
         }
 
         #logo {
-            z-index: inherit;
+            z-index: 20;
             display: inline-block;
             width: 100%;
+            margin-top: -90%;
             filter: invert();
+        }
+
+        #logo-shadow {
+            z-index: -20;
+            display: inline-block;
+            width: 100%;
+            filter: blur(20px);
         }
 
         .icon {
@@ -72,21 +80,25 @@
 
 
 <body>
-
-    <div id="center" class="container w-100">
-        <div class="row h-25 z"></div>
-        <div class="row w-50 mx-auto z">
-            <div class="col mx-auto z"><img src="img/wordmark.png" id="logo"></div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div id="center" class="container">
+                <div class="row h-25 z"></div>
+                <div class="row w-50 mx-auto z">
+                    <div class="col mx-auto z"><img src="img/wordmark.png" id="logo-shadow"><img src="img/wordmark.png" id="logo"></div>
+                </div>
+                <div class="row w-50 mx-auto mt-5 z">
+                    <div class="col z"><a href="https://twitter.com/famous4acentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Twitter"><i class="bi bi-twitter text-light icon"></i></a></div>
+                    <div class="col z"><a href="https://open.spotify.com/artist/0hpiEPpan5T8kJQkOQOMIT?si=Rh5XjLP6SKikO-scEPYYSQ" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Spotify"><i class="bi bi-soundwave text-light icon"></i></a></div>
+                    <div class="col z"><a href="http://facebook.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Facebook"><i class="bi bi-facebook text-light icon"></i></a></div>
+                    <div class="col z"><a href="http://youtube.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="YouTube"><i class="bi bi-youtube text-light icon"></i></a></div>
+                    <div class="col z"><a href="http://instagram.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Instagram"><i class="bi bi-instagram text-light icon"></i></a></div>
+                    <div class="col z"><a href="https://music.apple.com/us/artist/famous-for-a-century/603380085" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Apple Music"><i class="bi bi-music-note-beamed text-light icon"></i></a></div>
+                </div>
+            </div>
         </div>
-        <div class="row w-50 mx-auto mt-5 z">
-            <div class="col z"><a href="https://twitter.com/famous4acentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Twitter"><i class="bi bi-twitter text-light icon"></i></a></div>
-            <div class="col z"><a href="https://open.spotify.com/artist/0hpiEPpan5T8kJQkOQOMIT?si=Rh5XjLP6SKikO-scEPYYSQ" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Spotify"><i class="bi bi-soundwave text-light icon"></i></a></div>
-            <div class="col z"><a href="http://facebook.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Facebook"><i class="bi bi-facebook text-light icon"></i></a></div>
-            <div class="col z"><a href="http://youtube.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="YouTube"><i class="bi bi-youtube text-light icon"></i></a></div>
-            <div class="col z"><a href="http://instagram.com/famousforacentury" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Instagram"><i class="bi bi-instagram text-light icon"></i></a></div>
-            <div class="col z"><a href="https://music.apple.com/us/artist/famous-for-a-century/603380085" target="blank" class='text-decoration-none' data-bs-toggle="tooltip" data-bs-offset="[0,10]" title="Apple Music"><i class="bi bi-music-note-beamed text-light icon"></i></a></div>
-        </div>
-    </div>
+        <div class="col-3"></div>
     </div>
 
 
@@ -100,6 +112,19 @@
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+        });
+
+        (function () {
+            document.addEventListener('mousemove', parallax)
+            const elem = document.querySelector("#wrapper")
+            function parallax(e) {
+                let _w = window.innerWidth / 2
+                let _h = window.innerHeight / 2
+                let _mouseX = e.clientX
+                let _mouseY = e.clientY
+                let pos = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`
+                elem.style.backgroundPosition = pos;
+            }
+        })();
     </script>
 </body>
